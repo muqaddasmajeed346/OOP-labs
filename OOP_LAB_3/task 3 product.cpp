@@ -49,3 +49,19 @@ public:
         return quantity;
     }
 };
+
+int main() {
+    Product p;
+
+    // Set product details
+    p.setName("Laptop");
+    p.setPrice(75000);
+    p.setQuantity(10);
+
+    // Display product details
+    cout << "Product Name: " << p.getName() << endl;
+    cout << "Price: " << p.getPrice() << endl;
+    cout << "Quantity: " << p.getQuantity() << endl;
+
+    return 0;
+}
