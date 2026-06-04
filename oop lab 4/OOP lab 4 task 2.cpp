@@ -1,69 +1,50 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Person {
+class BankAccount {
 private:
-    string name;
-    int age;
+    string accountNumber;
+    string accountHolder;
+    double balance;
 
 public:
-    void input_person() {
-        cout << "Enter Name: ";
-        cin >> name;
-
-        cout << "Enter Age: ";
-        cin >> age;
+    // Parameterized constructor
+    BankAccount(string accNum, string accHolder, double bal) {
+        accountNumber = accNum;
+        accountHolder = accHolder;
+        balance = bal;
     }
 
-    void display_person() {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-    }
-};
-
-class Employee : public Person {
-private:
-    int employee_id;
-
-public:
-    void input_employee() {
-        input_person();
-        cout << "Enter Employee ID: ";
-        cin >> employee_id;
-    }
-
-    void display_employee() {
-        display_person();
-        cout << "Employee ID: " << employee_id << endl;
-    }
-};
-
-class Manager : public Employee {
-private:
-    string department;
-
-public:
-    void input_manager() {
-        input_employee();
-        cout << "Enter Department: ";
-        cin >> department;
-    }
-
-    void display_manager() {
-        display_employee();
-        cout << "Department: " << department << endl;
+    // Method to display account details
+    void showAccountDetails() {
+        cout << "Account Number  : " << accountNumber << endl;
+        cout << "Account Holder  : " << accountHolder << endl;
+        cout << "Balance         : " << balance << endl;
     }
 };
 
 int main() {
-    Manager m;
+    // User-defined values
+    string accNum;
+    string accHolder;
+    double bal;
 
-    cout << "Enter Manager Details\n";
-    m.input_manager();
+    cout << "Enter Account Number: ";
+    cin >> accNum;
 
-    cout << "\nManager Information\n";
-    m.display_manager();
+    cin.ignore(); // to handle newline issue
+
+    cout << "Enter Account Holder Name: ";
+    getline(cin, accHolder);
+
+    cout << "Enter Balance: ";
+    cin >> bal;
+
+    // Creating object using user input
+    BankAccount account(accNum, accHolder, bal);
+
+    cout << "\n--- Account Details ---\n";
+    account.showAccountDetails();
 
     return 0;
 }
